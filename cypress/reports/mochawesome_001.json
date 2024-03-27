@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-03-27T17:21:08.417Z",
+    "end": "2024-03-27T17:21:12.909Z",
+    "duration": 4492,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "dc31c967-62ec-410e-afc1-862267852a96",
+      "title": "",
+      "fullFile": "cypress/e2e/fithub-technical-test/registerUserTest.cy.js",
+      "file": "cypress/e2e/fithub-technical-test/registerUserTest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "968a6c04-da90-4dc1-9199-a452974caf5c",
+          "title": "Register user and patch update after successful register",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should check single user found",
+              "fullTitle": "Register user and patch update after successful register should check single user found",
+              "timedOut": null,
+              "duration": 63,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  failOnStatusCode: false,\n  method: 'GET',\n  url: 'https://reqres.in/api/users/20'\n}).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "e016a361-777a-4f7a-9a6e-0bfa84fc7877",
+              "parentUUID": "968a6c04-da90-4dc1-9199-a452974caf5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should check register without password is unable",
+              "fullTitle": "Register user and patch update after successful register should check register without password is unable",
+              "timedOut": null,
+              "duration": 394,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPIWithError('POST', 'https://reqres.in/api/register', {\n  username: 'arlingga@outlook.co.id'\n}, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(400);\n});",
+              "err": {},
+              "uuid": "56f510dc-037c-452e-ab26-9d6a786aca9e",
+              "parentUUID": "968a6c04-da90-4dc1-9199-a452974caf5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should create register user successfully",
+              "fullTitle": "Register user and patch update after successful register should create register user successfully",
+              "timedOut": null,
+              "duration": 460,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPI('POST', 'https://reqres.in/api/register', {\n  email: \"eve.holt@reqres.in\",\n  password: \"pistol\"\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('id').and.to.be.a('number');\n  expect(response.body).to.have.property('token');\n});",
+              "err": {},
+              "uuid": "96b12a4d-597e-483c-b172-9a73dbf3f19e",
+              "parentUUID": "968a6c04-da90-4dc1-9199-a452974caf5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should update register user successfully",
+              "fullTitle": "Register user and patch update after successful register should update register user successfully",
+              "timedOut": null,
+              "duration": 501,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPI('PATCH', 'https://reqres.in/api/users/2', {\n  name: \"arlingga\"\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('name').and.to.be.a('string');\n  expect(response.body.updatedAt).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);\n});",
+              "err": {},
+              "uuid": "eb63344c-2134-43f0-a5b2-67a9294ff245",
+              "parentUUID": "968a6c04-da90-4dc1-9199-a452974caf5c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "wait for video record duration purpose",
+              "fullTitle": "Register user and patch update after successful register wait for video record duration purpose",
+              "timedOut": null,
+              "duration": 3013,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.wait(3000);",
+              "err": {},
+              "uuid": "6b5cc336-0f02-4a9b-8484-e19015b21985",
+              "parentUUID": "968a6c04-da90-4dc1-9199-a452974caf5c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e016a361-777a-4f7a-9a6e-0bfa84fc7877",
+            "56f510dc-037c-452e-ab26-9d6a786aca9e",
+            "96b12a4d-597e-483c-b172-9a73dbf3f19e",
+            "eb63344c-2134-43f0-a5b2-67a9294ff245",
+            "6b5cc336-0f02-4a9b-8484-e19015b21985"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4431,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
