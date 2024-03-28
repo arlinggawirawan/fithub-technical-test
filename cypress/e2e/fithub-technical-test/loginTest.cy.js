@@ -9,6 +9,13 @@ describe('Login API https://reqres.in/ Test Case', () => {
         expect(response.body).to.have.property('token');
       });
     });
+    it('Get list user with delay response after login success', () => {
+        cy.request('GET', 'https://reqres.in/api/users?delay=3').then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body).to.have.property('total_pages').and.to.be.a('number');
+            expect(response.body).to.have.property('data').and.to.be.an('array');
+        });
+    });
     // Negative case scenario
     it('Negative case - Login with invalid credentials', () => {
       cy.request({

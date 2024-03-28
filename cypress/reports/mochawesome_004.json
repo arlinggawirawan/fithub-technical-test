@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-03-28T01:59:57.913Z",
+    "end": "2024-03-28T02:00:06.271Z",
+    "duration": 8358,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4953f2b3-6b19-4772-ac3c-ef0d61b3d4aa",
+      "title": "",
+      "fullFile": "cypress/e2e/fithub-technical-test/loginTest.cy.js",
+      "file": "cypress/e2e/fithub-technical-test/loginTest.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+          "title": "Login API https://reqres.in/ Test Case",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Positive case - Login with valid credentials",
+              "fullTitle": "Login API https://reqres.in/ Test Case Positive case - Login with valid credentials",
+              "timedOut": null,
+              "duration": 568,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPI('POST', 'https://reqres.in/api/login', {\n  username: 'eve.holt@reqres.in',\n  password: 'cityslicka'\n}).then(response => {\n  expect(response.status).to.equal(200);\n  expect(response.body).to.have.property('token');\n});",
+              "err": {},
+              "uuid": "80d8699e-02bd-423f-bf8e-b9c3d802ff20",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get list user with delay response after login success",
+              "fullTitle": "Login API https://reqres.in/ Test Case Get list user with delay response after login success",
+              "timedOut": null,
+              "duration": 3445,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request('GET', 'https://reqres.in/api/users?delay=3').then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('total_pages').and.to.be.a('number');\n  expect(response.body).to.have.property('data').and.to.be.an('array');\n});",
+              "err": {},
+              "uuid": "1f42cfea-ebd9-4894-86e7-77a01405f6f4",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative case - Login with invalid credentials",
+              "fullTitle": "Login API https://reqres.in/ Test Case Negative case - Login with invalid credentials",
+              "timedOut": null,
+              "duration": 408,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: 'https://reqres.in/api/login',\n  body: {\n    email: 'arlingga@outlook.co.id',\n    password: 'invalidpassword'\n  },\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(400);\n  expect(response.body).to.have.property('error');\n});",
+              "err": {},
+              "uuid": "6ae345a8-ba65-4ce4-ac31-10c853d00312",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative case - Login without input password",
+              "fullTitle": "Login API https://reqres.in/ Test Case Negative case - Login without input password",
+              "timedOut": null,
+              "duration": 411,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPIWithError('POST', 'https://reqres.in/api/login', {\n  username: 'peter@klaven'\n}, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(400);\n  expect(response.body).to.have.property('error');\n});",
+              "err": {},
+              "uuid": "21dc8114-a81b-443a-8994-6b85ec3b812e",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative case - Login without input email",
+              "fullTitle": "Login API https://reqres.in/ Test Case Negative case - Login without input email",
+              "timedOut": null,
+              "duration": 382,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.requestAPIWithError('POST', 'https://reqres.in/api/login', {\n  password: 'cityslicka'\n}, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.equal(400);\n  expect(response.body).to.have.property('error');\n});",
+              "err": {},
+              "uuid": "e2ebfc66-de8a-4060-942b-02fbca74f8d1",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "wait for video record duration purpose",
+              "fullTitle": "Login API https://reqres.in/ Test Case wait for video record duration purpose",
+              "timedOut": null,
+              "duration": 3008,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.wait(3000);",
+              "err": {},
+              "uuid": "0c75461f-a70b-45b3-90cf-9bbbfbdbc1b7",
+              "parentUUID": "1bb36da2-1ec1-45be-bb01-ecb22485675f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "80d8699e-02bd-423f-bf8e-b9c3d802ff20",
+            "1f42cfea-ebd9-4894-86e7-77a01405f6f4",
+            "6ae345a8-ba65-4ce4-ac31-10c853d00312",
+            "21dc8114-a81b-443a-8994-6b85ec3b812e",
+            "e2ebfc66-de8a-4060-942b-02fbca74f8d1",
+            "0c75461f-a70b-45b3-90cf-9bbbfbdbc1b7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8222,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
